@@ -24,5 +24,5 @@ export function validUsername(str) {
  */
 
 export function validMobile(str) {
-  /^1[3-9]\d{9}$/.test(str)
+  return /^1[3-9]\d{9}$/.test(str) // 校验手机号
 }

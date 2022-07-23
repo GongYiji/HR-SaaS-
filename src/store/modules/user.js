@@ -21,11 +21,12 @@ const actions = {
   async login(context, data) {
     // 调用api接口
     const result = await login(data)
+    // console.log(data)
+    // console.log(result.data)
     // axios默认加了一层data
-    if (result.data.success) {
-      // 如果为true  表示登录成功
-      context.commit('setToken', result.data.data)
-    }
+
+    // 如果为true  表示登录成功
+    context.commit('setToken', result)
   }
 }
 export default {
