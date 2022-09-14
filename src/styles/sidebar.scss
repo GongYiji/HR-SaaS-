@@ -188,8 +188,7 @@
     }
 
     .sidebar-container {
-      transition: transform .28s;
-      width: $sideBarWidth !important;
+      background: -webkit-linear-gradient(bottom, #3d6df8, #5b8cff);
     }
 
     &.hideSidebar {
