@@ -10,3 +10,12 @@ export function getDepartments() {
   })
 }
 
+/**
+ * 删除部门
+ */
+export function deleteDepartments(id) {
+  return request({
+    url: `/company/department/${id}`,
+    method: 'delete'
+  })
+}
