@@ -11,7 +11,10 @@
         <el-input style="width:80%" placeholder="1-50个字符" />
       </el-form-item>
       <el-form-item label="部门负责人">
-        <el-select style="width:80%" placeholder="请选择" />
+        <el-select v-model="formData.manager" style="width:80%" placeholder="请选择" @focus="getEmployeeSimple">
+          <!-- 需要循环生成选项   这里做一下简单的处理 显示的是用户名 存的也是用户名-->
+          <el-option v-for="item in peoples" :key="item.id" :label="item.username" :value="item.username" />
+        </el-select>
       </el-form-item>
       <el-form-item label="部门介绍">
         <el-input style="width:80%" placeholder="1-300个字符" type="textarea" :rows="3" />
@@ -31,6 +34,7 @@
 <script>
 // 这里可以导入其他文件(比如: 组件、工具js、第三方插件js、json文件、图片文件...)
 // 例如: import <组件名称> from '<组件路径>';
+import { getEmployeeSimple } from '@/api/employees'
 import { getDepartments } from '@/api/department'
 export default {
 // import 引入的组件需要注入到对象中才能使用
@@ -88,7 +92,8 @@ export default {
         manager: [{ required: true, message: '部门负责人不能为空', trigger: 'blur' }],
         introduce: [{ required: true, message: '部门介绍不能为空', trigger: 'blur' },
           { trigger: 'blur', min: 1, max: 300, message: '部门介绍要求1-50个字符' }]
-      }
+      },
+      peoples: [] // 接收获取的员工简单列表的数据
     }
   },
   // 计算属性 类似于 data 概念
@@ -114,7 +119,12 @@ export default {
   // 如果页面有 keep-alive 缓存功能，这个函数会触发
   activated() {},
   // 方法集合
-  methods: {}
+  methods: {
+    // 获取员工简单列表数据
+    async  getEmployeeSimple() {
+      this.peoples = await getEmployeeSimple()
+    }
+  }
 }
 </script>
 <style scoped >
