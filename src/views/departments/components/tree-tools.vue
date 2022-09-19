@@ -49,9 +49,10 @@ export default {
     operateDepts(type) {
       if (type === 'add') {
         // 添加子部门的操作
-        this.$emit('addDepts',this.treeNode)
+        this.$emit('addDepts', this.treeNode)
       } else if (type === 'edit') {
         //  编辑部门的操作
+        this.$emit('editDepts', this.treeNode)
       } else {
         //  删除操作
         this.$confirm('确定要删除该部门吗').then(() => {
