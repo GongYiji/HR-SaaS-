@@ -102,7 +102,7 @@ export default {
       page: {
         // 放置页码及相关数据
         page: 1,
-        pagesize: 2,
+        pagesize: 10,
         total: 0 // 记录总数
       },
       formData: {
