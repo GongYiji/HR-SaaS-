@@ -16,9 +16,13 @@
               </el-form-item>
             </el-form>
           </el-tab-pane>
-          <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-          <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-          <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+          <el-tab-pane label="个人详情" name="second">
+            <!-- <component :is="userInfo" /> -->
+            <user-info />
+          </el-tab-pane>
+          <el-tab-pane label="工作信息" name="third">
+            <jobInfo />
+          </el-tab-pane>
         </el-tabs>
       </el-card>
     </div>
@@ -28,12 +32,16 @@
 <script>
 // 这里可以导入其他文件(比如: 组件、工具js、第三方插件js、json文件、图片文件...)
 // 例如: import <组件名称> from '<组件路径>';
+import userInfo from './components/user-Info.vue'
+import jobInfo from './components/job-info.vue'
 import { getUserDetailById } from '@/api/user'
 import { saveUserDetailById } from '@/api/employees'
 export default {
 // import 引入的组件需要注入到对象中才能使用
   name: '',
-  components: {},
+  components: {
+    userInfo, jobInfo
+  },
   props: {},
   data() {
     // 这里存放数据
@@ -90,8 +98,12 @@ export default {
     //     console.log(error)
     //   }
       this.$refs.userform.validate(async() => {
-        await saveUserDetailById({ ...this.userInfo, password: this.userInfo.password2 })
-        this.$message.success('保存成功')
+        try {
+          await saveUserDetailById({ ...this.userInfo, password: this.userInfo.password2 })
+          this.$message.success('保存成功')
+        } catch (error) {
+          console.log(error)
+        }
       })
     }
   }
