@@ -20,6 +20,7 @@ import * as filters from '@/filters'
 import Component from '@/components'
 
 // set ElementUI lang to EN
+
 Vue.use(ElementUI, { locale })
 Vue.use(Component) // 注册自己的插件
 // 如果想要中文版 element-ui，按如下方式声明
