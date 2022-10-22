@@ -21,11 +21,17 @@ router.beforeEach(async(to, from, next) => {
     } else {
       if (!store.getters.userId) {
         // 如果没有id这个值 才会调用 vuex的获取资料的action
-        await store.dispatch('user/getUserInfo')
+        const { roles } = await store.dispatch('user/getUserInfo')
+        console.log(roles)
         // 为什么要写await 因为我们想获取完资料再去放行
+        const routes = await store.dispatch('permission/filterRoutes', roles.menus)
+        console.log(routes)
+        router.addRoutes([...routes, { path: '*', redirect: '/404', hidden: true }]) // 添加到路由表
+        next(to.path)
+      } else {
+        next()
       }
     }
-    next()
   } else {
     // 没有token的情况下
     if (whiteList.indexOf(to.path) > -1) {

@@ -18,11 +18,11 @@ import * as directives from '@/directives'
 import * as filters from '@/filters'
 // import * as filters from '@/filters' // 引入工具类
 import Component from '@/components'
-
 // set ElementUI lang to EN
-
+import CheckPermission from '@/mixin/checkPermission'
 Vue.use(ElementUI, { locale })
 Vue.use(Component) // 注册自己的插件
+Vue.mixin(CheckPermission)
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 // 注册自定义指令

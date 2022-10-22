@@ -81,7 +81,7 @@
 <script>
 import { updatePermission, addPermission, getPermissionDetail, delPermission, getPermissionList } from '@/api/permission'
 import { tranListToTreeData } from '@/utils/index.js'
-import { getRoleDetail } from '@/api/setting'
+import { getRoleDetail, assignPerm } from '@/api/setting'
 export default {
   data() {
     return {
