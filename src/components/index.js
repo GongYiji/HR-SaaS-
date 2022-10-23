@@ -6,6 +6,7 @@ import Print from 'vue-print-nb'
 import ScreenFull from './ScreenFull'
 import ThemePicker from './ThemePicker'
 import lang from './lang'
+import TagsView from './TagsView'
 export default {
   install(Vue) {
     // 注册全局的通用栏组件对象
@@ -16,5 +17,6 @@ export default {
     Vue.component('ThemePicker', ThemePicker)
     Vue.use(Print) // 注册打印组件
     Vue.component('lang', lang)
+    Vue.component('TagsView', TagsView)
   }
 }
