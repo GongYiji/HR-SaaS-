@@ -31,7 +31,7 @@ if (isProd) {
       'https://unpkg.com/element-ui/lib/theme-chalk/index.css' // 提前引入elementUI样式
     ], // 放置css文件目录
     js: [
-      'https://unpkg.com/vue/dist/vue.js', // vuejs
+      'https://unpkg.com/vue@2.7.10/dist/vue.min.js', // vuejs
       'https://unpkg.com/element-ui/lib/index.js', // element
       'https://cdn.jsdelivr.net/npm/xlsx@0.16.6/dist/xlsx.full.min.js', // xlsx 相关
       'https://cdn.jsdelivr.net/npm/xlsx@0.16.6/dist/jszip.min.js' // xlsx 相关
@@ -91,7 +91,7 @@ module.exports = {
         include: 'initial'
       }
     ])
-    // 注入cd变量 
+    // 注入cd变量
     config.plugin('html').tap(args => {
       args[0].cdn = cdn // 后面的cdn就是定义的变量
       return args // 需要返回这个参数
